@@ -1,0 +1,20 @@
+<form #quesform="ngForm">
+    <div>
+        <label for="fname">First Name</label>
+        <input type="text" id="fname" required [(ngModel)]="models.firstName" name="fname">
+        <label for="lname">Last Name</label>
+        <input type="text" id="lname" required [(ngModel)]="models.lastName" name="lname">
+    </div>
+    <div>
+        <label for="gender">Gender</label>
+        <input type="radio" value="male" name="gender" [(ngModel)]="selectedGender" required #gender="ngModel">male
+        <input type="radio" value="female" name="gender" [(ngModel)]="selectedGender" required #gender="ngModel">female
+    </div>
+    <div>
+        <label for="year">Year Of Birth</label>
+        <select id="year" required [(ngModel)]="selectedYear" name="year">
+            <option *ngFor="let year of years" [value]="year">{{year}}</option>
+        </select>
+    </div>    
+</form>
+<app-ques [model]="models" [year]="selectedYear" [gender]="selectedGender"></app-ques>
